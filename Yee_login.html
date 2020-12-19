@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册界面</title>
+	<style type="text/css">
+		#div{
+			width: 100%;
+			height: 300px;
+			padding: 0;
+			margin: 0 auto;
+			position: relative;
+		}
+		#div1{
+			width: 300px;
+			height: 300px;
+			padding-top: 100px;
+			float: left;
+			margin-left: 400px;
+		}
+		.box{
+			width: 300px;
+			height: 60px;
+			position: relative;
+			border: 1px solid #ccc;
+		}
+		.box div{
+			width: 90px;
+			height: 20px;
+			position: absolute;
+			right: 200px;
+			top: 16px;
+			font-size: 20px;
+		}
+		#user{
+			width: 200px;
+			height: 30px;
+			position: absolute;
+			right: 1px;
+			top: 15px;
+			border: 0px;
+			outline: none;
+			font-size: 25px;
+		}
+		#pw{
+			width: 200px;
+			height: 30px;
+			position: absolute;
+			right: 1px;
+			top: 15px;
+			border: 0px;
+			outline: none;
+			font-size: 25px;
+		}
+		#btn{
+			width: 300px;
+			height: 60px;
+			background-color: red;
+			font-size: 20px;
+			border: 0px;
+		}
+		#hint1{
+			height: 20px;
+			margin-bottom: 10px;
+			font-size: 15px;
+			color: #ccc;
+		}
+		#hint2{
+			height: 20px;
+			margin-bottom: 10px;
+			font-size: 15px;
+			color: #ccc;
+		}
+		#hint3{
+			width: 300px;
+			height: 300px;
+			line-height: 50px;
+			font-size: 20px;
+			color: red;
+			float: left;
+			margin-left: 50px;
+			padding-top: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div id="div">
+		<div id="div1">
+			<div class="box">
+				<div>用 户 名</div><input id="user" type="text">
+			</div>
+			<div id="hint1"></div>
+			<div class="box">
+				<div>设置密码</div><input id="pw" type="password">
+			</div>
+			<div id="hint2"></div>
+			<div>
+				<button id="btn">立即注册</button>
+			</div>
+		</div>
+		<div id="hint3"></div>
+	</div>
+	<script type="text/javascript">
+		var user = document.getElementById('user');
+		var pw = document.getElementById('pw');
+		var btn = document.getElementById('btn');
+		var hint1 = document.getElementById('hint1');
+		var hint2 = document.getElementById('hint2');
+		var hint3 = document.getElementById('hint3');
+
+		user.onclick=function(){
+			hint1.innerHTML = '支持中文数字';
+		}
+		user.onblur=function(){
+			if(user.value == ''){
+				hint1.innerHTML = '用户名不能为空';
+			}else{
+				hint1.innerHTML = '';
+			}
+		}
+
+		pw.onclick=function(){
+			hint2.innerHTML = '建议使用两种字符组合';
+		}
+		pw.onblur=function(){
+			if(pw.value == ''){
+				hint2.innerHTML = '密码不能为空';
+			}else{
+				hint2.innerHTML = '';
+			}
+		}
+
+		btn.onclick=function(){
+			if(user.value == ''||pw.value == ''){
+				hint3.innerHTML = '用户名或密码不能为空';
+			}else{
+				var p1 = document.createElement('p');
+				p1.innerHTML = '注册成功！';
+				hint3.appendChild(p1);
+				var p2 = document.createElement('p');
+				p2.innerHTML = '用户名：'+user.value;
+				hint3.appendChild(p2);
+				var p3 = document.createElement('p');
+				p3.innerHTML = '密码：'+pw.value;
+				hint3.appendChild(p3);
+			}
+		}
+		btn.onblur=function(){
+			hint3.innerHTML = '';
+		}
+	</script>
+</body>
+</html>
